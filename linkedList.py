@@ -8,3 +8,14 @@ head = {
         }
     }
 }
+
+
+head = {
+    "value": 5,
+    "next": {
+        "value": 5,
+        "next": None
+    }
+}
+
+print(head["next"]["value"])
