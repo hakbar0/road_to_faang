@@ -34,10 +34,44 @@ class LinkedList:
             return True
         
         return False
-
+    
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
         
+        if index == 0:
+            return self.prepend(value)
+        
+        if index == self.length:
+            return self.append(value)
+        
+        new_node = Node(value)
+        temp = self.get(index-1)
 
+        new_node.next = temp.next
+        temp = new_node
 
+        self.length += 1
+        
+        return True
+    
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        
+        prev = self.get(index - 1)
+        temp = prev.next
+        
+        prev.next = temp.next
+        temp.next = None
+        
+        self.length -= 1
+        return temp
 
     def append(self, value):
         new_node = Node(value)
@@ -94,6 +128,19 @@ class LinkedList:
             self.tail = None
         
         return temp
+    
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next
+        before = None
+
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
     
 
 
