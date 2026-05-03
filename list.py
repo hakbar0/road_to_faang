@@ -200,6 +200,30 @@ def binary_to_decimal(self):
         
         return dec
 
+def partition_list(self, x):
+        if not self.head:
+            return None
+            
+        dummy_one, dummy_two = Node(0), Node(0)
+        
+        prev_one = dummy_one
+        prev_two = dummy_two
+        
+        current = self.head
+        
+        while current:
+            if current.value < x:
+                prev_one.next = current
+                prev_one = prev_one.next
+            else:
+                prev_two.next = current
+                prev_two = prev_two.next
+            current = current.next
+        
+        prev_two.next = None
+        prev_one.next = dummy_two.next
+        
+        self.head = dummy_one.next
 
             
 
