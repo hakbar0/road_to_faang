@@ -190,6 +190,16 @@ def remove_duplicates(self):
                 
             current = current.next
 
+def binary_to_decimal(self):
+        current = self.head
+        dec = 0
+        
+        while current:
+            dec = dec * 2 + current.value
+            current = current.next
+        
+        return dec
+
 
             
 
