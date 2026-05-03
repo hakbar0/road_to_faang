@@ -225,6 +225,51 @@ def partition_list(self, x):
         
         self.head = dummy_one.next
 
+
+def reverse_between(self, start_index, end_index):
+        if self.head is None or self.head.next is None:
+            return None
+    
+        dummy = Node(0)
+        dummy.next = self.head
+        before = dummy
+    
+        for _ in range(start_index):
+            before = before.next
+    
+        current = before.next
+    
+        for _ in range(end_index - start_index):
+            temp = current.next
+            current.next = temp.next
+            temp.next = before.next
+            before.next = temp
+
+        self.head = dummy.next
+
+def swap_pairs(self):
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+        
+        while prev.next and prev.next.next:
+            # Identify the two nodes to swap
+            first_node = prev.next
+            second_node = prev.next.next
+            
+            # 1. Point prev to the second node
+            prev.next = second_node
+            
+            # 2. Connect the pair to the rest of the list
+            first_node.next = second_node.next
+            
+            # 3. Complete the swap within the pair
+            second_node.next = first_node
+            
+            # Move the prev pointer two steps forward for the next pair
+            prev = first_node
+            
+        self.head = dummy.next
             
 
 
