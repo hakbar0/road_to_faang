@@ -90,6 +90,42 @@ class DoublyLinkedList:
                 temp = temp.prev
         
         return temp
+    
+    def set_value(self,index,value):
+        temp = self.get(index)
+
+        if temp is not None:
+            temp.value = value
+            return True
+        
+        return False
+    
+
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        
+        if index == 0:
+            return self.prepend(value)
+        
+        if index == self.length:
+            return self.append(value)
+        
+        new_node = Node(value)
+        before = self.get(index - 1)
+        after = before.next # Track the node that will follow the new node
+
+        # Link new_node to the surrounding nodes
+        new_node.next = after
+        new_node.prev = before
+
+        # Link the surrounding nodes to new_node
+        before.next = new_node
+        after.prev = new_node # This is the line your code was missing
+
+        self.length += 1
+        return True
+
 
         
 
@@ -98,5 +134,5 @@ my_doubly_linked_list = DoublyLinkedList(7)
 my_doubly_linked_list.append(2)
 my_doubly_linked_list.pop()
 my_doubly_linked_list.prepend(5)
-my_doubly_linked_list.get(1)
+my_doubly_linked_list.insert(,5)
 my_doubly_linked_list.print_list()
