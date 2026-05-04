@@ -123,7 +123,7 @@ class LinkedList:
 
         return True
     
-    def remove(self, index, value):
+    def remove(self, index):
         if index < 0 or index >= self.length:
             return None
         
