@@ -31,11 +31,16 @@ class Queue:
             return None
         
         temp = self.first
-        self.first = temp.next
+        
+        if self.length == 1:
+            self.first = None
+            self.last = None
+        else:
+            self.first = self.first.next
+            
         temp.next = None
-
-        self.length -=1
-
+        
+        self.length -= 1
         return temp
 
 
