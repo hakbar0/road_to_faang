@@ -24,6 +24,7 @@ class Stack:
             new_node.next = self.top
             self.top = new_node
         self.height += 1
+        return True
 
     
     def pop(self):
