@@ -12,8 +12,7 @@ class Solution:
             countM[letter] = countM.get(letter, 0) + 1
         
         for key in countR:
-            if countR[key] != countM.get(key, 0):
+            if countR[key] > countM.get(key, 0):
                 return False
         
         return True
-
